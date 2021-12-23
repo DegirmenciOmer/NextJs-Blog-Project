@@ -1,11 +1,15 @@
 import Layout from '../components/Layout'
 import '../styles/globals.css'
+import Header from './../components/Header'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Header />
+      <main className='container'>
+        <Component {...pageProps} />
+      </main>
+    </>
   )
 }
 
