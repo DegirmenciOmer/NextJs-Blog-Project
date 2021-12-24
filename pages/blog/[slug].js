@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 import Link from 'next/link'
+import xss from 'xss'
 
 export default function PostPage({
   frontmatter: { title, date, cover_image },
@@ -12,14 +13,21 @@ export default function PostPage({
   return (
     <>
       <Link href='/'>
-        <a className='btn'>Back</a>
+        <a className='btn btn-back'>Back</a>
       </Link>
       <div className='card card-page'>
         <h1 className='post-title'>{title}</h1>
-        <p>Posted on {date}</p>
+        <p className='post-date'>Posted on {date}</p>
+        <img src={cover_image} />
+        <div className='post-body'>
+          {/* parse the content with marked, purify the content with xss */}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: xss(marked(content)),
+            }}
+          ></div>
+        </div>
       </div>
-      <img src={cover_image} />
-      <div></div>
     </>
   )
 }
