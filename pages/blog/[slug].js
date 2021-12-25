@@ -18,7 +18,7 @@ export default function PostPage({
       <div className='card card-page'>
         <h1 className='post-title'>{title}</h1>
         <p className='post-date'>Posted on {date}</p>
-        <img src={cover_image} />
+        <img alt='' src={cover_image} />
         <div className='post-body'>
           {/* parse the content with marked, purify the content with xss */}
           <div

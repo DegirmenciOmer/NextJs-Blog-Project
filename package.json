@@ -3,9 +3,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": " next build && next export && (if exist .next rd /s /q .next 2>nul) ",
     "start": "next start",
     "lint": "next lint"
+    
+
+
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
